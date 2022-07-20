@@ -44,8 +44,7 @@ if args.type == 'annuity':
 			monthly_payment = float(args.payment)
 			loan_interest = float(args.interest)
 			nominal_interest = loan_interest / (12 * 100)
-			num_of_months = math.log(monthly_payment / (monthly_payment - nominal_interest * loan_principal),
-			                         1 + nominal_interest)
+			num_of_months = math.log(monthly_payment / (monthly_payment - nominal_interest * loan_principal), 1 + nominal_interest)
 			num_of_months = math.ceil(num_of_months)
 			if num_of_months % 12 == 0:
 				if num_of_months / 12 == 1:
@@ -71,13 +70,13 @@ elif args.type == 'diff':
 		loan_interest = float(args.interest)
 		nominal_interest = loan_interest / (12 * 100)
 		m = 1
-		sum = 0
+		sum_tot = 0
 		while m <= num_of_periods:
 			monthly_payment = loan_principal/num_of_periods + nominal_interest * (loan_principal - ((loan_principal * (m - 1))/num_of_periods))
 			monthly_payment = math.ceil(monthly_payment)
 			print(f'Month {m}: payment is {int(monthly_payment)}')
-			sum += monthly_payment
+			sum_tot += monthly_payment
 			m += 1
-		print(f'Overpayment = {int(loan_principal - sum)}')
+		print(f'Overpayment = {int(loan_principal - sum_tot)}')
 else:
 	print('Incorrect parameters')
