@@ -1,7 +1,9 @@
+# Importing modules
 import argparse
 import math
 import sys
 
+# Parsing arguments from command line
 parser = argparse.ArgumentParser(description="This is a program to calculate the loan)")
 parser.add_argument("--type", choices=['annuity', 'diff'])
 parser.add_argument("--payment")
@@ -13,6 +15,7 @@ args = parser.parse_args()
 
 elements = [args.type, args.payment, args.principal, args.periods, args.interest]
 
+# Different cases to calculate
 if args.type == 'annuity':
 	if args.interest is None:
 		print('Incorrect parameters')
